@@ -102,7 +102,7 @@ export default function Page() {
                         </button>
                     </form>
                     <p className='text-center  mt-4'>
-                        Don't have an account? <Link href="/auth/signup" className="text-green-500 hover:underline">Sign Up</Link>
+                        {"Don't have an account?"} <Link href="/auth/signup" className="text-green-500 hover:underline">Sign Up</Link>
                     </p>
                 </div>
             </div>

@@ -22,10 +22,6 @@ export default function Page() {
     const [selectedType, setSelectedType] = useState('');
     const [showDefaultPrompts, setShowDefaultPromptsPrompts] = useState(true);
 
-    useEffect(() => {
-        fetchPublicPrompts();
-    }, [currentPage]);
-
     const fetchPublicPrompts = async () => {
         try {
             const params = {
@@ -50,6 +46,11 @@ export default function Page() {
             console.error('Error fetching public prompts:', error);
         }
     };
+
+    
+    useEffect(() => {
+        fetchPublicPrompts();
+    }, [currentPage, fetchPublicPrompts ]);
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -9,9 +10,7 @@ export default function Home() {
                         Unlock Your Creative Potential with AI-Powered Prompts
                     </h1>
                     <p className="text-lg md:text-xl text-gray-600 mt-4">
-                        Discover a world of endless writing possibilities. Find inspiration,
-                        generate unique content, and break through writer's block.
-                    </p>
+                        {"Discover a world of endless writing possibilities. Find inspiration, generate unique content, and break through writer's block."}                    </p>
                     <div className="mt-8">
                         <Link href="/prompts/gallery">
                             <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out">
@@ -21,7 +20,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div className="md:w-1/2 p-4 ">
-                    <img src="/images/heroimage1.jpg"  // Replace with your hero image
+                    <Image src="/images/heroimage1.jpg"  // Replace with your hero image
                         alt="Hero Image"
                         className="w-full h-auto rounded-lg shadow-lg "
                     />
@@ -69,13 +68,11 @@ export default function Home() {
                             <h3 className="text-xl font-semibold text-gray-800">Boost Your Creativity</h3>
                         </div>
                         <p className="text-gray-600 mt-2">
-                            Overcome writer's block and unlock your full creative potential.
+                            {"Overcome writer's block and unlock your full creative potential."}
                         </p>
                     </div>
                 </div>
             </section>
-
-            {/* Call to Action Section */}
             <section className="container mx-auto px-4 py-16 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                     Ready to Start Writing?
