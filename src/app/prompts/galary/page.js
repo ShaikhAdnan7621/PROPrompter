@@ -40,7 +40,6 @@ export default function Page() {
         }
     };
 
-    
     useEffect(() => {
         fetchPublicPrompts();
     }, [currentPage, fetchPublicPrompts]);
@@ -98,7 +97,7 @@ export default function Page() {
                         </div>
                         <button type="submit" className="rounded-xl bg-white focus:outline-none focus:none hover:bg-green-100 transition-all duration-50 shadow-md shadow-black/40 font-bold py-2 px-4 focus:shadow-outline text-center"
                         >
-                            <FaSearch className="text-lg mx-auto text-center" />
+                            <FaSearch className="text-lg text-center mx-auto" />
                         </button>
                     </form>
                 </div>
