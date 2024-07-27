@@ -1,6 +1,6 @@
 ## Prompt Gallery: Unleash Your Creative Potential
 
-**Prompt Gallery** is a web application built with Next.js, Tailwind CSS, and React.js, powered by the Gemini API and MongoDB. It offers a platform to store, share, and discover useful prompts for various tasks.  
+**PROPrompter** is a web application built with Next.js, Tailwind CSS, and React.js, powered by the Gemini API and MongoDB. It offers a platform to store, share, and discover useful prompts for various tasks.  
 
 **Features:**
 
