@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animate-div {
+  left: 50%;
+  bottom: 0;
+  transform: translateY(100%) translateX(-50%);
+  animation: slideUp 1s 1s forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%) translateX(-50%);
+  }
+
+  100% {
+    transform: translateY(0%) translateX(-50%);
+  }
+}
+
+
+.moderscroller::-webkit-scrollbar {
+  /* General scrollbar styles (apply to both vertical and horizontal) */
+  width: 10px;
+  /* Vertical scrollbar width */
+  height: 10px;
+  /* Horizontal scrollbar height */
+}
+
+.moderscroller::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  /* Background color for both tracks */
+  border-radius: 10px;
+}
+
+.moderscroller::-webkit-scrollbar-thumb {
+  background: #888;
+  /* Thumb color for both */
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+}
+
+.moderscroller::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Additional Styles for Horizontal Scrollbar */
+.moderscroller::-webkit-scrollbar-thumb:horizontal {
+  /* These styles will apply specifically to the horizontal thumb */
+  border-radius: 5px;
+  /* Rounded corners for the horizontal thumb */
+}
