@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
     return (
         <main className="max-w-[1280px] mx-auto flex min-h-screen flex-col items-center justify-between bg-gray-100">
-            <section className="container mx-auto px-4 py-16 md:py-24 lg:py-32 flex flex-col-reverse md:flex-row items-center justify-between gap-4 md:gap-0">
+            <section className="container mx-auto px-4 py-16 md:py-24 lg:py-32 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-5">
                 <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0">
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800">
                         Unlock Your Creative Potential with AI-Powered Prompts
@@ -19,10 +19,12 @@ export default function Home() {
                         </Link>
                     </div>
                 </div>
-                <div className="md:w-1/2 p-4 ">
+                <div className="md:w-1/2 p-0 " >
                     <Image src="/images/heroimage1.jpg"  // Replace with your hero image
                         alt="Hero Image"
-                        className="w-full h-auto rounded-lg shadow-lg "
+                        width={500}
+                        height={500}
+                        className="w-full h-auto rounded-lg  shadow-lg"
                     />
                 </div>
             </section>
