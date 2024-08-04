@@ -1,6 +1,3 @@
-
-// app/prompts/myprompts/page.js
-
 "use client"
 import { useEffect, useState } from 'react';
 import { FaPaperPlane, FaSquarePlus } from "react-icons/fa6";
@@ -10,13 +7,16 @@ import PromptCard from '@/components/PromptCard';
 import PromptTypeInput from '@/components/PromptTypeSelect';
 import promptTypes from '@/utils/json/promptTypes';
 import ConfirmPopup from '@/components/ConfirmPopup'; // Import ConfirmPopup component
+import Pagination from '@/components/Pagination'; // Import Pagination component
 
 export default function Page() {
     const [promptText, setPromptText] = useState('');
     const [titleText, setTitleText] = useState('');
     const [selectedType, setSelectedType] = useState('General');
     const [promptList, setPromptList] = useState([]);
-    // Add state for the confirmation popup
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
     const [confirmPopup, setConfirmPopup] = useState({
         isOpen: false,
         title: '',
@@ -24,24 +24,33 @@ export default function Page() {
         function: () => { }
     });
 
-    useEffect(() => {
-        fetchPrompts();
-    }, []);
+    // useEffect(() => {
+    //     fetchPrompts();
+    // }, []); // Fetch initially
 
+    // Update prompts when currentPage changes
+    useEffect(() => {
+            fetchPrompts();
+    }, [currentPage]);  
 
     const fetchPrompts = async () => {
         try {
-            const response = await axios.post('/api/prompt/get');
+            const response = await axios.post('/api/prompt/get', { page: currentPage, limit: 10 }); // Send the current page number in the request
             if (response.status === 200) {
                 console.log(response.data)
-                setPromptList(response.data.prompts); // Update promptList with the fetched prompts
-
+                setPromptList(response.data.prompts);
+                setCurrentPage(response.data.currentPage);
+                setTotalPages(response.data.totalPages);
             } else {
                 console.error('Error fetching prompts:', response.data);
             }
         } catch (error) {
             console.error('Error fetching prompts:', error);
         }
+    };
+
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
     };
 
 
@@ -90,7 +99,6 @@ export default function Page() {
     };
 
     const Updateprompt = async (id, updatedData) => {
-        // Open confirmation popup for updating
         setConfirmPopup({
             isOpen: true,
             title: 'Confirm Update',
@@ -104,7 +112,6 @@ export default function Page() {
 
     const updatePrompt = async (id, updatedData) => {
         try {
-            // check prompt edited is correctly using the schema
             const validationResult = PromptSchema.safeParse(updatedData);
 
             if (validationResult.success) {
@@ -119,20 +126,17 @@ export default function Page() {
             } else {
                 console.error('Validation errors:', validationResult.error.errors);
             }
-
         } catch (error) {
             console.error('Error updating prompt:', error);
         }
     }
 
     const deletePrompt = async (id) => {
-        // Open confirmation popup for deleting
         setConfirmPopup({
             isOpen: true,
             title: 'Confirm Delete',
             message: 'Are you sure you want to delete this prompt?',
             function: () => {
-                // Delete the prompt after confirmation
                 deletePromptbyid(id);
             }
         });
@@ -223,13 +227,22 @@ export default function Page() {
                         </div>
                     </div>
                 </div>
-                <div className=" max-w-[1280px] p-4 overflow-auto moderscroller h-screen sm:pb-44 pb-56 pt-10  w-full">
-                    {promptList.map((prompt) => (
-                        <PromptCard key={prompt._id} prompt={prompt}
-                            Updateprompt={Updateprompt}
-                            deletePromptbyid={deletePrompt}
-                        />
-                    ))}
+                <div className=" max-w-[1280px] p-2 pt-14 w-full h-screen">
+                    <div className="overflow-x-scroll p-2 pt-0 moderscroller sm:pb-36 w-full pb-48 h-full">
+                        {promptList.map((prompt) => (
+                            <PromptCard key={prompt._id} prompt={prompt}
+                                Updateprompt={Updateprompt}
+                                deletePromptbyid={deletePrompt}
+                            />
+                        ))}
+                        {promptList.length > 0 &&
+                            <Pagination
+                                currentPage={currentPage}
+                                totalPages={totalPages}
+                                onPageChange={handlePageChange}
+                            />
+                        }
+                    </div>
                 </div>
             </div>
             {/* Render the ConfirmPopup component */}

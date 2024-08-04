@@ -51,3 +51,160 @@
   border-radius: 5px;
   /* Rounded corners for the horizontal thumb */
 }
+
+
+/* Global CSS file */
+
+.markdown-container {
+  /* Basic Styling */
+  font-family: sans-serif;
+  line-height: 1.6;
+  color: #333;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 5px;
+  }
+
+  hr {
+    border-top: 2px solid #86efac;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  h3 {
+    font-size: 1.6em;
+  }
+
+  h4 {
+    font-size: 1.4em;
+  }
+
+  h5 {
+    font-size: 1.2em;
+  }
+
+  h6 {
+    font-size: 1em;
+  }
+
+  p {
+    margin-bottom: 0.75em;
+  }
+
+  pre {
+    background-color: #f0f0f0;
+    padding: 1em;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: monospace;
+    background-color: #eee;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ul,
+  ol {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 3em;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  /* Link Styles */
+  a {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  img {
+    max-width: 100%;
+    width:300px;
+    border-radius: 10px;
+    border: 1px solid #2e7d32;
+    height: auto;
+    display: inline;
+    margin-bottom: 1em;
+    border-radius: 8px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2em;
+  }
+
+  th {
+    background-color: #dcfce7;
+    color: #2e7d32;
+    padding: 15px 20px;
+    text-align: left;
+    border-bottom: 2px solid #2e7d32;
+    font-weight: bold;
+  }
+
+  td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #e0f2e6;
+    cursor: pointer;
+  }
+
+  td:first-child {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+
+  blockquote {
+    border-left: 4px solid #15803d;
+    padding: 1em;
+    margin-left: 1em;
+    margin-bottom: 1.5em;
+  }
+}

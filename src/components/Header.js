@@ -11,21 +11,19 @@ export default function Header() {
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
-
-  // Function to close the menu when a link is clicked
   const handleLinkClick = () => {
     setShowMenu(false); // Close the menu
   };
 
   return (
-    <header className="absolute w-full top-0 z-50 bg-green-700  shadow-md">
-      <div className="py-1 px-4 max-w-[1280px] container mx-auto flex items-center justify-between">
+    <header >
+      <div className="absolute top-0 w-full z-50 py-1 px-4 max-w-[1280px] container mx-auto flex items-center justify-between left-1/2 transform -translate-x-1/2 text-green-700" >
         <Link href="/">
-          <h1 className="text-white text-2xl font-bold">PROPrompter</h1>
+          <h1 className=" text-2xl font-bold">PROPrompter</h1>
         </Link>
 
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white focus:outline-none">
+        <div className="sm:hidden">
+          <button onClick={toggleMenu} className=" focus:outline-none">
             {showMenu ? (
               <FaTimes className="text-2xl" />
             ) : (
@@ -34,23 +32,43 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className={`md:flex md:items-center md:space-x-6 text-white ${showMenu ? 'block' : 'hidden'}`}>
-          <ul className="md:flex md:items-center md:space-x-6 text-white">
+        <nav className="hidden sm:flex sm:items-center sm:space-x-6  " >
+          <ul className="sm:flex sm:items-center sm:space-x-6 ">
             <li>
-              <Link href="/prompts/galary" onClick={handleLinkClick}>Gallery</Link>
+              <Link className='hover:border-b-2 duration-75 hover:pb-0.5 hover:border-green-700 hover:font-bold ' href="/prompts/galary" onClick={handleLinkClick}>Gallery</Link>
             </li>
             <li>
-              <Link href="/prompts/myprompts" onClick={handleLinkClick}>My Prompts</Link>
+              <Link className='hover:border-b-2 duration-75 hover:pb-0.5 hover:border-green-700 hover:font-bold ' href="/prompts/myprompts" onClick={handleLinkClick}>My Prompts</Link>
             </li>
             <li>
-              <Link href="/chat" onClick={handleLinkClick}>Chat Now</Link>
+              <Link className='hover:border-b-2 duration-75 hover:pb-0.5 hover:border-green-700 hover:font-bold ' href="/chat" onClick={handleLinkClick}>Chat Now</Link>
             </li>
             <li>
-              <Link href="/auth/login" onClick={handleLinkClick}>Login</Link>
+              <Link className='hover:border-b-2 duration-75 hover:pb-0.5 hover:border-green-700 hover:font-bold ' href="/auth/login" onClick={handleLinkClick}>Login</Link>
             </li>
           </ul>
         </nav>
+
       </div>
+      {
+        showMenu &&
+        <nav className="absolute top-0 w-full sm:flex sm:items-center sm:space-x-6   z-40 p-4">
+          <ul className="sm:flex sm:items-center sm:space-x-6 space-y-3  mt-10">
+            <li>
+              <Link className='hover:border-b-2 duration-75 hover:pb-0.5 hover:border-green-700 hover:font-bold ' href="/prompts/galary" onClick={handleLinkClick}>Gallery</Link>
+            </li>
+            <li>
+              <Link className='hover:border-b-2 duration-75 hover:pb-0.5 hover:border-green-700 hover:font-bold ' href="/prompts/myprompts" onClick={handleLinkClick}>My Prompts</Link>
+            </li>
+            <li>
+              <Link className='hover:border-b-2 duration-75 hover:pb-0.5 hover:border-green-700 hover:font-bold ' href="/chat" onClick={handleLinkClick}>Chat Now</Link>
+            </li>
+            <li>
+              <Link className='hover:border-b-2 duration-75 hover:pb-0.5 hover:border-green-700 hover:font-bold ' href="/auth/login" onClick={handleLinkClick}>Login</Link>
+            </li>
+          </ul>
+        </nav>
+      }
     </header>
   );
 }

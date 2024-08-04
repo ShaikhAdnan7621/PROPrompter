@@ -50,7 +50,7 @@ export default function Page() {
     
     useEffect(() => {
         fetchPublicPrompts();
-    }, [currentPage, fetchPublicPrompts ]);
+    }, [currentPage]);
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);

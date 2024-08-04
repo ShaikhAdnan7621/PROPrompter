@@ -59,7 +59,7 @@ const PromptCard = ({ prompt, Updateprompt, deletePromptbyid }) => {
   };
 
   return (
-    <div className={"bg-white rounded-2xl overflow-hidden shadow-md shadow-black/30 mt-4 "}>
+    <div className={"bg-white rounded-2xl overflow-hidden shadow-md shadow-black/30 mb-4 "}>
       <div className=' px-2 pt-4 flex justify-between items-center '>
         {isEditing ? (
           <div className="sm:flex-row flex flex-col gap-2 w-full h-full">
@@ -86,7 +86,7 @@ const PromptCard = ({ prompt, Updateprompt, deletePromptbyid }) => {
       <div className=' px-2 pt-1.5 bg-white '>
         {isEditing ? (
           <textarea
-            className="w-full rounded-xl shadow-md shadow-black/30 border bg-white p-1 pb-0 resize-none focus:outline-none focus:none hover:bg-green-100 transition-all duration-50 h-52 moderscroller"
+            className="w-full rounded-xl shadow-md shadow-black/30 border bg-white p-1 pb-0 resize-none focus:outline-none focus:none hover:bg-green-100 transition-all duration-50 h-96 moderscroller"
             value={editedPromptData.prompt}
             onChange={handlePromptChange}
           />
@@ -98,7 +98,7 @@ const PromptCard = ({ prompt, Updateprompt, deletePromptbyid }) => {
       <div className='flex gap-3 justify-end items-center px-5 py-1 bg-white'>
         {isEditing ? (
           <>
-            <FaSave className='text-green-50 text-lg cursor-pointer mr-2' onClick={handleSaveClick} />
+            <FaSave className='text-green-500 text-lg cursor-pointer mr-2' onClick={handleSaveClick} />
             <FaTimes className='text-green-500 text-lg cursor-pointer mr-2' onClick={handleCancelClick} />
           </>
         ) : (

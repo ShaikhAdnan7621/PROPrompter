@@ -9,9 +9,13 @@ await Connect();
 
 export async function POST(req, res) {
     try {
-        // Fetch prompts from MongoDB for the current user
-        const cookies = req.cookies.get('token'); // Use getCookies to retrieve the cookie
-        const token = cookies?.value; // Access the cookie value
+         
+        const body = await req.json();
+        const { page, limit } = body;
+        const skip = (page - 1) * limit; 
+
+        const cookies = req.cookies.get('token');
+        const token = cookies?.value;
         if (!token) {
             return sendResponse(res, 401, { message: 'Unauthorized' });
         }
@@ -20,9 +24,17 @@ export async function POST(req, res) {
             return sendResponse(res, 401, { message: 'Unauthorized' });
         }
 
-        const prompts = await PromptModel.find({ author:userId }); // Fetch prompts associated with the user ID
+        const prompts = await PromptModel.find({ author: userId })
+            .skip(skip)
+            .limit(limit); // Fetch prompts with pagination
 
-        return sendResponse(res, 200, { prompts }); // Send the prompts as a response
+        const totalPrompts = await PromptModel.countDocuments({ author: userId }); // Get total number of prompts
+
+        return sendResponse(res, 200, {
+            prompts, 
+            currentPage: parseInt(page), 
+            totalPages: Math.ceil(totalPrompts / limit) // Calculate total pages
+        });
     } catch (error) {
         console.error(error);
         return sendResponse(res, 500, { message: 'Internal server error' });
